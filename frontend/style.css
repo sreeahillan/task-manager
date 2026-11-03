@@ -1,0 +1,547 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface-2: #f1f3f9;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e6e8f0;
+  --primary: #5b5bf0;
+  --primary-2: #8b5cf6;
+  --primary-soft: rgba(91, 91, 240, 0.1);
+  --danger: #ef4444;
+  --danger-soft: rgba(239, 68, 68, 0.1);
+  --ok: #10b981;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 8px 24px -8px rgba(16, 24, 40, 0.12);
+  --shadow-lg: 0 24px 48px -12px rgba(16, 24, 40, 0.2);
+  --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0d14;
+    --surface: #14171f;
+    --surface-2: #1b1f2a;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --border: #262b38;
+    --primary-soft: rgba(139, 124, 255, 0.16);
+    --danger-soft: rgba(239, 68, 68, 0.16);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.8);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text);
+  background:
+    radial-gradient(
+      900px 500px at 10% -10%,
+      rgba(91, 91, 240, 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at 100% 0%,
+      rgba(139, 92, 246, 0.14),
+      transparent 60%
+    ),
+    var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+h3 {
+  margin: 0 0 14px;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+#userBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 5px 5px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+#userName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin: 14px 0;
+  box-shadow: var(--shadow-md);
+}
+
+#authView {
+  max-width: 420px;
+  margin: 48px auto 0;
+  padding: 28px;
+  animation: rise 0.4s ease both;
+}
+
+#authView form {
+  margin-top: 18px;
+}
+#authView .btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+#authView p {
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Inputs ---------- */
+input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input:focus {
+  outline: none;
+  background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.add-form {
+  padding: 18px;
+}
+.add-form input:nth-child(2) {
+  margin-bottom: 14px;
+}
+.add-form .btn {
+  width: 100%;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 18px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px -6px rgba(91, 91, 240, 0.6);
+  transition:
+    transform 0.15s,
+    box-shadow 0.2s,
+    background 0.2s,
+    filter 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn:focus-visible {
+  outline: 3px solid var(--primary-soft);
+  outline-offset: 2px;
+}
+
+.btn.ghost {
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.btn.ghost:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+  filter: none;
+}
+
+.btn.danger {
+  color: var(--danger);
+  background: var(--danger-soft);
+  box-shadow: none;
+}
+.btn.danger:hover {
+  background: var(--danger);
+  color: #fff;
+  filter: none;
+}
+
+/* ---------- Filters (segmented control) ---------- */
+.filters {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin: 8px 0 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+.chip {
+  padding: 7px 18px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.chip:hover {
+  color: var(--text);
+}
+
+.chip.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 4px 12px -4px rgba(91, 91, 240, 0.6);
+}
+
+/* ---------- Task list ---------- */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s,
+    opacity 0.2s;
+  animation: rise 0.35s ease both;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-soft);
+}
+
+.task .info {
+  flex: 1;
+  min-width: 0;
+}
+
+.task .t-title {
+  font-weight: 600;
+  word-break: break-word;
+  transition: color 0.2s;
+}
+
+.task .t-desc {
+  margin-top: 2px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.task .t-desc:empty {
+  display: none;
+}
+
+.task.done {
+  opacity: 0.7;
+}
+.task.done .t-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* Custom checkbox */
+.task input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin: 1px 0 0;
+  padding: 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.task input[type="checkbox"]:hover {
+  border-color: var(--primary);
+}
+
+.task input[type="checkbox"]:checked {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+      center / 80% no-repeat,
+    linear-gradient(135deg, var(--primary), var(--primary-2));
+  border-color: transparent;
+}
+
+/* Task action buttons */
+.actions {
+  display: flex;
+  gap: 6px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.task:hover .actions {
+  opacity: 1;
+}
+
+.actions .btn {
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
+
+/* ---------- Helpers ---------- */
+.muted {
+  color: var(--muted);
+}
+.center {
+  text-align: center;
+}
+.hidden {
+  display: none !important;
+}
+
+#empty {
+  padding: 40px 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- Toast message ---------- */
+.message {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 50;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #fff;
+  background: var(--danger);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  animation: toast 0.3s ease both;
+}
+
+.message.ok {
+  background: var(--ok);
+}
+
+/* ---------- Edit dialog ---------- */
+dialog {
+  width: min(92vw, 440px);
+  padding: 24px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+dialog[open] {
+  animation: pop 0.25s ease both;
+}
+
+dialog::backdrop {
+  background: rgba(10, 12, 20, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes toast {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 520px) {
+  .container {
+    padding: 24px 14px 80px;
+  }
+  h1 {
+    font-size: 1.45rem;
+  }
+  .card {
+    padding: 18px;
+  }
+  #authView {
+    margin-top: 24px;
+    padding: 22px;
+  }
+
+  .filters {
+    display: flex;
+    width: 100%;
+  }
+  .chip {
+    flex: 1;
+    padding: 8px 6px;
+  }
+
+  .task {
+    flex-wrap: wrap;
+    padding: 14px;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

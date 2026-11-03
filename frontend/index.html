@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Task Manager</h1>
+      <div id="userBar" class="hidden">
+        <span id="userName"></span>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </header>
+
+    <!-- Auth -->
+    <section id="authView" class="card">
+      <h2 id="authTitle">Login</h2>
+      <form id="authForm">
+        <input id="username" placeholder="Username" required minlength="3" autocomplete="username" />
+        <input id="password" type="password" placeholder="Password (min 6)" required minlength="6" autocomplete="current-password" />
+        <button class="btn" type="submit">Login</button>
+      </form>
+      <p class="muted">
+        <span id="authSwitchText">No account?</span>
+        <a href="#" id="authSwitch">Register</a>
+      </p>
+    </section>
+
+    <!-- App -->
+    <section id="appView" class="hidden">
+      <form id="taskForm" class="card add-form">
+        <input id="title" placeholder="Task title" required maxlength="200" />
+        <input id="description" placeholder="Description (optional)" maxlength="1000" />
+        <button class="btn" type="submit">Add Task</button>
+      </form>
+
+      <div class="filters">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="pending">Pending</button>
+        <button class="chip" data-filter="completed">Completed</button>
+      </div>
+
+      <ul id="taskList" class="task-list"></ul>
+      <p id="empty" class="muted center hidden">No tasks here yet.</p>
+    </section>
+
+    <p id="message" class="message hidden"></p>
+  </main>
+
+  <!-- Edit dialog -->
+  <dialog id="editDialog">
+    <form id="editForm" method="dialog">
+      <h3>Edit Task</h3>
+      <input id="editTitle" required maxlength="200" />
+      <input id="editDescription" maxlength="1000" placeholder="Description" />
+      <div class="row">
+        <button type="button" id="editCancel" class="btn ghost">Cancel</button>
+        <button type="submit" class="btn">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
